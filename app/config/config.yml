@@ -29,7 +29,8 @@ framework:
     http_method_override: true
     assets: ~
     php_errors:
-        log: true
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
@@ -65,3 +66,9 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        cssrewrite: ~
