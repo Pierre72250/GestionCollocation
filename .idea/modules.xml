@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GestionCollocation.iml" filepath="$PROJECT_DIR$/.idea/GestionCollocation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../GestionColocation/.idea/GestionCollocation.iml" filepath="$PROJECT_DIR$/../GestionColocation/.idea/GestionCollocation.iml" />
     </modules>
   </component>
 </project>
