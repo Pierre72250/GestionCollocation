@@ -74,6 +74,29 @@ assetic:
         cssrewrite: ~
 
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
-    user_class: AppBundle\Entity\User
+    db_driver:     orm                       # Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+    firewall_name: main                      # Le nom du firewall derrière lequel on utilisera ces utilisateurs
+    user_class:    AppBundle\Entity\User     # La classe de l'entité User que nous utilisons
+    use_username_form_type: false
+    use_listener:           true
+    use_flash_notifications: true
+
+    from_email:
+        address: email@email.fr
+        sender_name: gestionColocation
+
+    registration:
+            confirmation:
+                enabled: false
+            form:
+                type: AppBundle\Form\RegistrationType
+    resetting:
+        token_ttl: 86400
+        email:
+            template:   FOSUserBundle:Resetting:email.txt.twig
+    service:
+        mailer:                 fos_user.mailer.default
+        email_canonicalizer:    fos_user.util.canonicalizer.default
+        username_canonicalizer: fos_user.util.canonicalizer.default
+        token_generator:        fos_user.util.token_generator.default
+        user_manager:           fos_user.user_manager.default
