@@ -17,8 +17,7 @@
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body class="index-page">
         {% block javascripts %}
             {% javascripts  'Resources/assets/js/jquery.min.js'
                             'Resources/assets/js/bootstrap.min.js'
@@ -28,6 +27,105 @@
             %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
+            <!-- Navbar -->
+            <nav class="navbar navbar-transparent navbar-fixed-top navbar-color-on-scroll">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-index">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="{{ path('homepage') }}">
+                            <div class="logo-container">
+                                {#<div class="logo">
+                                    <img src="assets/img/logo.png" alt="Creative Tim Logo" rel="tooltip" title="<b>Material Kit</b> was Designed & Coded with care by the staff from <b>Creative Tim</b>" data-placement="bottom" data-html="true">
+                                </div>#}
+                                <div class="brand">
+                                    {{"titreHeader"|trans}}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navigation-index">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="{{ path('indexLocation') }}" >
+                                    <i class="material-icons">search</i> {{"rechloca"|trans}}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('newLocation') }}">
+                                    <i class="material-icons">add</i> {{"newloca"|trans}}
+                                </a>
+                            </li>
+                            <li>
+                                {% if app.user %}
+                                    <a href="{{ path('fos_user_security_logout') }}">
+                                        Déconnexion
+                                    </a>
+                                {% else %}
+                                    <a href="{{ path('fos_user_security_login') }}">
+                                        Connexion
+                                    </a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
+            <div class="wrapper">
+                <div class="header header-filter" style="background-image: url('Resources/assets/img/header-background.jpg');">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="brand">
+                                    <h1>Gestion des colocations</h1>
+                                    <h3>Projet Symfony - L3 MIAGE - Université de Nantes</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main main-raised">
+                    <div class="container">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+                <footer class="footer">
+                    <div class="container">
+                        <nav class="pull-left">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        {{ "projet" | trans }}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('fos_user_registration_register') }}">
+                                        {{"creerCompt"|trans}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">Français</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">English</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="copyright pull-right">
+                            &copy; 2018 - Made by Simon ROUILLIER & Pierre FOUILLET - Université de Nantes
+                        </div>
+                    </div>
+                </footer>
+            </div>
         {% endblock %}
     </body>
 </html>
+
+{% block stylesheets %}
+{% endblock %}

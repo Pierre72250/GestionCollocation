@@ -2,82 +2,58 @@
 
 namespace AppBundle\Entity;
 
-use FOS\UserBundle\Entity\user as BaseUser;
+use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
     /**
-     * @var int
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="id_user", type="string", length=255, unique=true)
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
      */
-    private $idUser;
+    protected $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="prenom", type="string", length=255)
-     */
-    private $prenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="nom", type="string", length=255)
-     */
-    private $nom;
+    protected $nom;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_naissance", type="date")
+     * @ORM\Column(name="date_naissance", type="date", nullable=true)
      */
-    private $dateNaissance;
+    protected $dateNaissance;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="telephone", type="string", length=255, nullable=true)
      */
-    private $email;
+    protected $telephone;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mdp", type="string", length=255)
-     */
-    private $mdp;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telephone", type="string", length=255)
-     */
-    private $telephone;
-
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get id
@@ -87,54 +63,6 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idUser
-     *
-     * @param string $idUser
-     *
-     * @return User
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return string
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return User
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -207,54 +135,6 @@ class User extends BaseUser
     public function getDateNaissance()
     {
         return $this->dateNaissance;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set mdp
-     *
-     * @param string $mdp
-     *
-     * @return User
-     */
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
-
-        return $this;
-    }
-
-    /**
-     * Get mdp
-     *
-     * @return string
-     */
-    public function getMdp()
-    {
-        return $this->mdp;
     }
 
     /**

@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <form class="form-horizontal" action="" method="post">
+    <div class="control-group">
+      {{"locAdr"|trans}}
+      {{form_errors(add_location_form.adresse)}}
+      {{form_widget(add_location_form.adresse)}}
+    </div>
+    <div class="control-group">
+      {{"locVille"|trans}}
+      {{form_errors(add_location_form.ville)}}
+      {{form_widget(add_location_form.ville)}}
+    </div>
+    <div class="control-group">
+      {{"loccp"|trans}}
+      {{form_errors(add_location_form.codePostal)}}
+      {{form_widget(add_location_form.codePostal)}}
+    </div>
+    <div class="control-group">
+      {{"locLoyerCcM"|trans}}
+      {{form_errors(add_location_form.loyerCcM)}}
+      {{form_widget(add_location_form.loyerCcM)}}
+    </div>
+    <div class="control-group">
+      {{"locCharges"|trans}}
+      {{form_errors(add_location_form.charges)}}
+      {{form_widget(add_location_form.charges)}}
+    </div>
+    <div class="control-group">
+      {{"locSurfaceBalcon"|trans}}
+      {{form_errors(add_location_form.balcon)}}
+      {{form_widget(add_location_form.balcon)}}
+    </div>
+    <div class="control-group">
+      {{"locSurfaceTot"|trans}}
+      {{form_errors(add_location_form.surfaceTot)}}
+      {{form_widget(add_location_form.surfaceTot)}}
+    </div>
+    <div class="control-group">
+      {{"locAnneeConst"|trans}}
+      {{form_errors(add_location_form.anneeConst)}}
+      {{form_widget(add_location_form.anneeConst)}}
+    </div>
+    <div class="control-group">
+      {{"locEtage"|trans}}
+      {{form_errors(add_location_form.etage)}}
+      {{form_widget(add_location_form.etage)}}
+    </div>
+    <div class="control-group">
+      {{"locnbPiece"|trans}}
+      {{form_errors(add_location_form.nbPiece)}}
+      {{form_widget(add_location_form.nbPiece)}}
+    </div>
+    <div class="control-group">
+      {{"locnbChambre"|trans}}
+      {{form_errors(add_location_form.nbChambre)}}
+      {{form_widget(add_location_form.nbChambre)}}
+    </div>
+    <div class="control-group">
+      {{"locToiletteSep"|trans}}
+      {{form_errors(add_location_form.toilette)}}
+      {{form_widget(add_location_form.toilette)}}
+    </div>
+    <div class="control-group">
+      {{"locCuisineEqui"|trans}}
+      {{form_errors(add_location_form.cuisineEquipee)}}
+      {{form_widget(add_location_form.cuisineEquipee)}}
+    </div>
+    <div class="control-group">
+      {{"locMeuble"|trans}}
+      {{form_errors(add_location_form.meuble)}}
+      {{form_widget(add_location_form.meuble)}}
+    </div>
+    <div class="control-group">
+      {{"locNbParking"|trans}}
+      {{form_errors(add_location_form.nbParking)}}
+      {{form_widget(add_location_form.nbParking)}}
+    </div>
+    <div class="control-group">
+      {{"locInterphone"|trans}}
+      {{form_errors(add_location_form.interphone)}}
+      {{form_widget(add_location_form.interphone)}}
+    </div>
+    <div class="control-group">
+      {{"locAscenseur"|trans}}
+      {{form_errors(add_location_form.ascenseur)}}
+      {{form_widget(add_location_form.ascenseur)}}
+    </div>
+    <div class="control-group">
+      {{"locNormesAndicap"|trans}}
+      {{form_errors(add_location_form.normesAndicap)}}
+      {{form_widget(add_location_form.normesAndicap)}}
+    </div>
+    <div class="control-group">
+      {{"locDescription"|trans}}
+      {{form_errors(add_location_form.description)}}
+      {{form_widget(add_location_form.description)}}
+    </div>
+
+    <input type="submit" name="ajout" value="{{"boutonAjout"|trans}}">
+  </form>
+{% endblock %}

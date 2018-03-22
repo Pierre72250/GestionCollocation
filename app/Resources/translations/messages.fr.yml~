@@ -1,0 +1,27 @@
+rechloca: 'Recherche une colocation'
+newloca: 'Proposer une colocation'
+projet: 'Le projet'
+creerCompt: 'Créer un compte'
+titre.loca: 'Liste des colocations'
+boutonSup: Supprimer
+boutonModif: Modifier
+locAdr: Adresse
+locVille: Ville
+loccp: 'Code postal'
+locLoyerCcM: 'Loyer mensuel charges comprises'
+locCharges: 'Charges mensuelles'
+locSurfaceBalcon: 'Surface du balcon (m²)'
+locSurfaceTot: 'Surface totale (m²)'
+locAnneeConst: 'Année de construction'
+locEtage: Etage
+locnbPiece: 'Nombre de pièces'
+locnbChambre: 'Nombre de chambres disponibles'
+locToiletteSep: 'Toilette sépraées'
+locCuisineEqui: 'Cuisine éaquipée'
+locMeuble: Meublé
+locNbParking: 'Nombre de parking disponible'
+locInterphone: Interphone
+locAscenseur: Ascenseur
+locNormesAndicap: 'Normes andicapés'
+locDescription: Description
+boutonAjout: Ajouter

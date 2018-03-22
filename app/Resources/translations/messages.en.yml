@@ -1,0 +1,28 @@
+rechloca: Search a roommate
+newloca: Propose a roommate
+projet: Project
+creerCompt: Create an account
+titre.loca: The roommate list
+boutonSup: Delete
+boutonModif: Modify
+boutonAjout: Add
+locAdr: Adress
+locVille: City
+loccp: Postal code
+locLoyerCcM: Monthly rent with loads
+locCharges: Loads
+locSurfaceBalcon: Surface of balcony (m²)
+locSurfaceTot: Surface (m²)
+locAnneeConst: Year of construct
+locEtage: Stage
+locnbPiece: Number of rooms
+locnbChambre: Number of bedrooms
+locToiletteSep: Separate toilet
+locCuisineEqui: Equiped kitchen
+locMeuble: Furnished
+locNbParking: Number of parkings
+locInterphone: Buzzer
+locAscenseur: Elevator
+locNormesAndicap: Handicapped
+locDescription: Description
+titreHeader: Gestion of colocations

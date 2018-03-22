@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,20 +21,6 @@ class Location
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="id_loca", type="string", length=255, unique=true)
-     */
-    private $idLoca;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="id_user", type="string", length=255, unique=true)
-     */
-    private $idUser;
 
     /**
      * @var string
@@ -180,54 +167,6 @@ class Location
     }
 
     /**
-     * Set idLoca
-     *
-     * @param string $idLoca
-     *
-     * @return Location
-     */
-    public function setIdLoca($idLoca)
-    {
-        $this->idLoca = $idLoca;
-    
-        return $this;
-    }
-
-    /**
-     * Get idLoca
-     *
-     * @return string
-     */
-    public function getIdLoca()
-    {
-        return $this->idLoca;
-    }
-
-    /**
-     * Set idUser
-     *
-     * @param string $idUser
-     *
-     * @return Location
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-    
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return string
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-    /**
      * Set ville
      *
      * @param string $ville
@@ -237,7 +176,7 @@ class Location
     public function setVille($ville)
     {
         $this->ville = $ville;
-    
+
         return $this;
     }
 
@@ -261,7 +200,7 @@ class Location
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
@@ -285,7 +224,7 @@ class Location
     public function setCodePostal($codePostal)
     {
         $this->codePostal = $codePostal;
-    
+
         return $this;
     }
 
@@ -309,7 +248,7 @@ class Location
     public function setLoyerCcM($loyerCcM)
     {
         $this->loyerCcM = $loyerCcM;
-    
+
         return $this;
     }
 
@@ -333,7 +272,7 @@ class Location
     public function setCharges($charges)
     {
         $this->charges = $charges;
-    
+
         return $this;
     }
 
@@ -357,7 +296,7 @@ class Location
     public function setBalcon($balcon)
     {
         $this->balcon = $balcon;
-    
+
         return $this;
     }
 
@@ -381,7 +320,7 @@ class Location
     public function setSurfaceTot($surfaceTot)
     {
         $this->surfaceTot = $surfaceTot;
-    
+
         return $this;
     }
 
@@ -405,7 +344,7 @@ class Location
     public function setAnneeConst($anneeConst)
     {
         $this->anneeConst = $anneeConst;
-    
+
         return $this;
     }
 
@@ -429,7 +368,7 @@ class Location
     public function setEtage($etage)
     {
         $this->etage = $etage;
-    
+
         return $this;
     }
 
@@ -453,7 +392,7 @@ class Location
     public function setNbPiece($nbPiece)
     {
         $this->nbPiece = $nbPiece;
-    
+
         return $this;
     }
 
@@ -477,7 +416,7 @@ class Location
     public function setNbChambre($nbChambre)
     {
         $this->nbChambre = $nbChambre;
-    
+
         return $this;
     }
 
@@ -501,7 +440,7 @@ class Location
     public function setToilette($toilette)
     {
         $this->toilette = $toilette;
-    
+
         return $this;
     }
 
@@ -525,7 +464,7 @@ class Location
     public function setCuisineEquipee($cuisineEquipee)
     {
         $this->cuisineEquipee = $cuisineEquipee;
-    
+
         return $this;
     }
 
@@ -549,7 +488,7 @@ class Location
     public function setMeuble($meuble)
     {
         $this->meuble = $meuble;
-    
+
         return $this;
     }
 
@@ -573,7 +512,7 @@ class Location
     public function setNbParking($nbParking)
     {
         $this->nbParking = $nbParking;
-    
+
         return $this;
     }
 
@@ -597,7 +536,7 @@ class Location
     public function setInterphone($interphone)
     {
         $this->interphone = $interphone;
-    
+
         return $this;
     }
 
@@ -621,7 +560,7 @@ class Location
     public function setAscenseur($ascenseur)
     {
         $this->ascenseur = $ascenseur;
-    
+
         return $this;
     }
 
@@ -645,7 +584,7 @@ class Location
     public function setNormesAndicap($normesAndicap)
     {
         $this->normesAndicap = $normesAndicap;
-    
+
         return $this;
     }
 
@@ -669,7 +608,7 @@ class Location
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
@@ -683,4 +622,3 @@ class Location
         return $this->description;
     }
 }
-
