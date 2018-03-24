@@ -21,7 +21,6 @@ class LocationController extends Controller{
    public function indexLocation(Request $request){
      $repository = $this->getDoctrine()->getRepository(Location::class);
      $locations = $repository->findAll();
-
      return $this->render('location/index.html.twig',[
        'locations'=>$locations
      ]);
@@ -44,30 +43,33 @@ class LocationController extends Controller{
     * @throws \LogicException
     */
    public function newLocation(Request $request){
-     if(!isset($_POST['ajout'])){
-       $location = new Location();
-       $form = $this->createForm(LocationType::class, $location, ['action' => $this->generateUrl('newLocation')]);
-       $form->handleRequest($request);
-       if(!$form->isSubmitted() || !$form->isValid()){
-         return $this->render('location/new.html.twig', [
-           'add_location_form' => $form->createView(),
-           'location' => $location,
-         ]);
+
+       if($this->getUser() == null){
+           return $this->redirectToRoute('fos_user_security_login');
        }
-     }
-     else{
+
        $location = new Location();
        $form = $this->createForm(LocationType::class, $location, [
-         'action' => $this->generateUrl('newLocation')
+           'action' => $this->generateUrl('newLocation')
        ]);
-
        $form->handleRequest($request);
-       $em = $this->getDoctrine()->getManager();
-       $em->persist($location);
-       $em->flush();
-       unset($_POST);
-       return $this->redirectToRoute('indexLocation');
-     }
+       $location->setUser($this->getUser());
+
+       if(!isset($_POST['ajout'])){
+            if(!$form->isSubmitted() || !$form->isValid()){
+                return $this->render('location/new.html.twig', [
+                    'add_location_form' => $form->createView(),
+                    'location' => $location,
+                ]);
+            }
+       }
+       else{
+           $em = $this->getDoctrine()->getManager();
+           $em->persist($location);
+           $em->flush();
+           unset($_POST);
+           return $this->redirectToRoute('indexLocation');
+       }
    }
 
    /**

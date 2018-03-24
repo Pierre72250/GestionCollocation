@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+
 
 /**
  * Location
@@ -154,6 +157,15 @@ class Location
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @var User
+
+     * @ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @JoinColumn(nullable=false)
+     *
+     */
+    private $user;
 
 
     /**
@@ -620,5 +632,22 @@ class Location
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

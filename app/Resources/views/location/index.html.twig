@@ -2,22 +2,50 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h2>{{"titre.loca"|trans}}</h2>
 
-  {% if locations %}
-   {% for loc in locations %}
-     <fieldset>
-       adresse {{ loc.adresse }},
-       Ville {{ loc.ville }}
-       <a href="{{ path('deleteLocation', { 'id': loc.id }) }}">
-         {{"boutonSup"|trans}}
-       </a>
-       <a href="{{ path('updateLocation', { 'id': loc.id }) }}">
-         {{"boutonModif"|trans}}
-       </a>
-     </fieldset>
-   {% endfor %}
-  {% else %}
-    <li>Pas (encore !) d'annonces</li>
-  {% endif %}
+    {% if locations %}
+
+        <h2>{{"titre.loca"|trans}}</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Ville</th>
+                <th>Adresse</th>
+                <th>Loyer</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for loc in locations %}
+                    <tr>
+                        <td>{{ loc.ville }}</td>
+                        <td>{{ loc.adresse }}</td>
+                        <td>{{ loc.loyerCcM }} €</td>
+                        <td class="td-actions text-right">
+                            <!-- On verifie que l'utilisateur est connecté et si c'est le redécteur de l'annonce. -->
+                            {% if is_granted("IS_AUTHENTICATED_FULLY") and app.user.id == loc.getuser.getid %}
+                                <a href="{{ path('updateLocation', { 'id': loc.id }) }}" rel="tooltip" title="Editer l'annonce" class="btn btn-success btn-simple btn-xs">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="{{ path('deleteLocation', { 'id': loc.id }) }}" rel="tooltip" title="Supprimer l'annonce" class="btn btn-danger btn-simple btn-xs">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            {% endif %}
+                            <a class="btn btn-primary" href="#">Voir l'annonce</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            <div class="container-fluid">
+                <div class="alert-icon">
+                    <i class="material-icons">info_outline</i>
+                </div>
+                <b>Aucune annonce n'est enregistrée sur le site.</b>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
