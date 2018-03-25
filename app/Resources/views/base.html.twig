@@ -72,13 +72,16 @@
                                     </a>
                                 {% endif %}
                             </li>
+                            <!-- <li>
+                                <a href="{{ path('fos_user_profile_edit') }}"><i class="material-icons">settingsbase.html.twig</i></a>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
             </nav>
             <!-- End Navbar -->
             <div class="wrapper">
-                <div class="header header-filter" style="background-image: url('Resources/assets/img/header-background.jpg');">
+                <div class="header header-filter" style="background-image: url('{{ asset('Resources/assets/img/header-background.jpg') }}');">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">

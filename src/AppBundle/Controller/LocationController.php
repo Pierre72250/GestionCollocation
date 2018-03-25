@@ -5,7 +5,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Location;
-use AppBundle\Entity\User;
 use AppBundle\Form\LocationType;
 
 /**
@@ -76,6 +75,11 @@ class LocationController extends Controller{
     * @Route("/edit/{id}", requirements={"id": "\d+"}, name="updateLocation")
     */
     public function updateLocation(Location $location, Request $request){
+        if($this->getUser() == null || $this->getUser() != $location->getUser() ){
+            return $this->render('accesdenied.html.twig', [
+                'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            ]);
+        }
       if(!isset($_POST['modif'])){
         $form = $this->createForm(LocationType::class, $location);
         $form->handleRequest($request);
