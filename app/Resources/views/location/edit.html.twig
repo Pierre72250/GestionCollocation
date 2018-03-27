@@ -5,13 +5,13 @@
     <div class="container">
       <ul>
         <li>
-          <a href="{{ path('homepage') }}">Accueil</a> /
+          <a href="{{ path('homepage') }}">{{"accueil"|trans}}</a> /
         </li>
         <li>
-          <a href="{{ path('indexLocation') }}">Liste des colocations</a> /
+          <a href="{{ path('indexLocation') }}">{{"listLoca"|trans}}</a> /
         </li>
         <li>
-          <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')) }}">Modifier l'annonce</a>
+          <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')) }}">{{"modifLoca"|trans}}</a>
         </li>
       </ul>
     </div>

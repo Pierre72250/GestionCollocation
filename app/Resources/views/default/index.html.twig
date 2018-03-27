@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="brand">
-                        <h1>Gestion des colocations</h1>
+                        <h1>{{"titreHeader"|trans}}</h1>
                         <h3>Projet Symfony - L3 MIAGE - Université de Nantes</h3>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Recherche</h2>
+    <h2>{{"titreRecherche"|trans}}</h2>
     <form class="form-horizontal" action="{{ path('searchLocation') }}" method="post" enctype="multipart/form-data">
         {{"locVille"|trans}}<input type="text" name="ville">
         {{"locLoyerCcM"|trans}} max<input type="text" name="loyer_cc_m">

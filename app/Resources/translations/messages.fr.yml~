@@ -1,8 +1,9 @@
-rechloca: 'Recherche une colocation'
-newloca: 'Proposer une colocation'
+listLoca: 'Toutes les annonces'
+newloca: 'Proposer une annonce'
 projet: 'Le projet'
 creerCompt: 'Créer un compte'
-titre.loca: 'Liste des colocations'
+titre.loca: 'Liste des annonces'
+titre.users: 'Liste des utilisateurs'
 boutonSup: Supprimer
 boutonModif: Modifier
 locAdr: Adresse
@@ -22,6 +23,20 @@ locMeuble: Meublé
 locNbParking: 'Nombre de parking disponible'
 locInterphone: Interphone
 locAscenseur: Ascenseur
-locNormesAndicap: 'Normes andicapés'
+locNormesAndicap: 'Normes handicapées'
 locDescription: Description
 boutonAjout: Ajouter
+titreHeader: 'Gestion Colocation'
+Registration.Register.email: email
+accesRefuse: 'Accès refusé. Vous n''avez pas les droits pour acceder à cette page.'
+mon_profil: 'Mon profil'
+deconnexion: Déconnexion
+connexion: Connexion
+accueil: Accueil
+rss.description: 'Flux RSS des annonces du site.'
+oui: Oui
+non: Non
+titreRecherche: Recherche
+modifLoca: 'Modifier l''annonce'
+voirAnnonce: 'Voir l''annonce'
+aucuneAnnonceRech: 'Aucune annonce correspond à votre re cherche.'

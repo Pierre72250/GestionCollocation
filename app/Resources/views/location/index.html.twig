@@ -6,10 +6,10 @@
         <div class="container">
             <ul>
                 <li>
-                    <a href="{{ path('homepage') }}">Accueil</a> /
+                    <a href="{{ path('homepage') }}">{{"accueil"|trans}}</a> /
                 </li>
                 <li>
-                    <a href="{{ path('indexLocation') }}">Liste des colocations</a>
+                    <a href="{{ path('indexLocation') }}">{{"titre.loca"|trans}}</a>
                 </li>
                 <li>
             </ul>
@@ -30,9 +30,9 @@
         <table class="table">
             <thead>
             <tr>
-                <th>Ville</th>
-                <th>Adresse</th>
-                <th>Loyer</th>
+                <th>{{"locVille"|trans}}</th>
+                <th>{{"locnbPiece"|trans}}</th>
+                <th>{{"locLoyerCcM"|trans}}</th>
                 <th class="text-right">Actions</th>
             </tr>
             </thead>
@@ -40,7 +40,7 @@
                 {% for loc in locations %}
                     <tr>
                         <td>{{ loc.ville }}</td>
-                        <td>{{ loc.adresse }}</td>
+                        <td>{{ loc.nbPiece }}</td>
                         <td>{{ loc.loyerCcM }} €</td>
                         <td class="td-actions text-right">
                             <!-- On verifie que l'utilisateur est connecté et si c'est le redacteur de l'annonce. -->
@@ -52,7 +52,7 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             {% endif %}
-                            <a class="btn btn-primary" href="{{ path('infoLocation', { 'id': loc.id }) }}">Voir l'annonce</a>
+                          <a class="btn btn-primary" href="{{ path('infoLocation', { 'id': loc.id }) }}">{{"voirAnnonce"|trans}}</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -64,7 +64,7 @@
                 <div class="alert-icon">
                     <i class="material-icons">info_outline</i>
                 </div>
-                <b>Aucune annonce ne correspond à votre recherche.</b>
+                <b>{{"aucuneAnnonceRech"|trans}}</b>
             </div>
         </div>
     {% endif %}

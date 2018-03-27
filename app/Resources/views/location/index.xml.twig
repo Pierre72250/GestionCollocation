@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
     <channel>
-        <title>{{ 'rss.title'|trans }}</title>
+        <title>{{ 'titreHeader'|trans }}</title>
         <description>{{ 'rss.description'|trans }}</description>
         <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
         <lastBuildDate>{{ (locations|last).publishedAt|default('now')|date('r', timezone='GMT') }}</lastBuildDate>
@@ -9,9 +9,10 @@
 
         {% for loc in locations %}
             <item>
-                <title>{{ loc.ville }}</title>
+                <city>{{ loc.ville }}</city>
                 <description>{{ loc.description }}</description>
                 <author>{{ loc.getuser.username }}</author>
+                
             </item>
         {% endfor %}
     </channel>

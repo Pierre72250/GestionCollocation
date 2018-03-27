@@ -92,18 +92,18 @@
                             {% if app.user %}
                                 <li>
                                     <a href="{{ path('fos_user_profile_show') }}">
-                                        <i class="material-icons">person</i> Mon profil
+                                        <i class="material-icons">person</i>{{"mon_profil"|trans}}
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
-                                        <i class="material-icons">power_settings_new</i> Déconnexion
+                                        <i class="material-icons">power_settings_new</i>{{"deconnexion"|trans}}
                                     </a>
                                 </li>
                             {% else %}
                                 <li>
                                     <a href="{{ path('fos_user_security_login') }}">
-                                        <i class="material-icons">person</i> Connexion
+                                        <i class="material-icons">person</i>{{"connexion"|trans}}
                                     </a>
                                 </li>
                             {% endif %}
