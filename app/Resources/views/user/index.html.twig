@@ -1,47 +1,82 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Users list</h1>
+{% block ariane %}
+    <div class="ariane">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="{{ path('homepage') }}">Accueil</a> /
+                </li>
+                <li>
+                    <a href="{{ path('indexUsers') }}">Liste des utilisateurs</a>
+                </li>
+                <li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
 
-    <table>
-        <thead>
+{% block headerBackground %}
+    <div class="navbarFixeDefault"></div>
+{% endblock %}
+
+{% block body %}
+    {% if users %}
+
+        <h2>{{"titre.users"|trans}}</h2>
+
+        <table class="table">
+            <thead>
             <tr>
                 <th>Id</th>
-                <th>Type</th>
+                <th>Status</th>
                 <th>Prenom</th>
                 <th>Nom</th>
-                <th>Datenaissance</th>
                 <th>Telephone</th>
-                <th>Actions</th>
+                <th>eMail</th>
+                <th class="text-right">Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
-                <td>{{ user.type }}</td>
-                <td>{{ user.prenom }}</td>
-                <td>{{ user.nom }}</td>
-                <td>{% if user.dateNaissance %}{{ user.dateNaissance|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ user.telephone }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                        <td>
+                            {% if user.enabled == true %}
+                                <i class="material-icons" style="color: #4e7f5d;">fiber_manual_record</i>
+                            {% else %}
+                                <i class="material-icons" style="color: #d60b0b;">fiber_manual_record</i>
+                            {% endif %}
+                        </td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.telephone }}</td>
+                    <td>{{ user.email }}</td>
+                    <td class="td-actions text-right">
+                        {% if user.enabled == true %}
+                            <a href="{{ path('desableUser', { 'id': user.id }) }}" rel="tooltip" title="Désactiver l'utilisateur" class="btn btn-danger btn-simple btn-xs">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        {% else %}
+                            <a href="{{ path('enableUser', { 'id': user.id }) }}" rel="tooltip" title="Activer l'utilisateur" class="btn btn-success btn-simple btn-xs">
+                                <i class="fa fa-check"></i>
+                            </a>
+                        {% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('user_new') }}">Create a new user</a>
-        </li>
-    </ul>
+                        <a class="btn btn-primary" href="#">Voir le profil</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            <div class="container-fluid">
+                <div class="alert-icon">
+                    <i class="material-icons">info_outline</i>
+                </div>
+                <b>Aucun utilisateur n'est enregistrée sur le site.</b>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

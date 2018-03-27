@@ -2,13 +2,15 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Location;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Form\LocationType;
 
 /**
- * @Route("/location")
+ * @Route("/locations")
  */
 class LocationController extends Controller{
 
@@ -20,10 +22,25 @@ class LocationController extends Controller{
    public function indexLocation(Request $request){
      $repository = $this->getDoctrine()->getRepository(Location::class);
      $locations = $repository->findAll();
+
      return $this->render('location/index.html.twig',[
        'locations'=>$locations
      ]);
    }
+
+    /**
+     * @Route("/rss.xml", name="rssLocation")
+     * @Method("GET")
+     * @Cache(smaxage="10")
+     */
+    public function rssLocation(Request $request){
+        $repository = $this->getDoctrine()->getRepository(Location::class);
+        $locations = $repository->findAll();
+
+        return $this->render('location/index.xml.twig',[
+            'locations'=>$locations
+        ]);
+    }
 
    /**
     * @Route("/delete/{id}", requirements={"id": "\d+"}, name="deleteLocation")
@@ -42,8 +59,7 @@ class LocationController extends Controller{
     * @throws \LogicException
     */
    public function newLocation(Request $request){
-
-       if($this->getUser() == null){
+     if($this->getUser() == null){
            return $this->redirectToRoute('fos_user_security_login');
        }
 
@@ -75,25 +91,23 @@ class LocationController extends Controller{
     * @Route("/edit/{id}", requirements={"id": "\d+"}, name="updateLocation")
     */
     public function updateLocation(Location $location, Request $request){
-        if($this->getUser() == null || $this->getUser() != $location->getUser() ){
-            return $this->render('accesdenied.html.twig', [
-                'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-            ]);
-        }
-      if(!isset($_POST['modif'])){
-        $form = $this->createForm(LocationType::class, $location);
-        $form->handleRequest($request);
-
-        if(!$form->isSubmitted() || !$form->isValid()){
-          return $this->render('location/edit.html.twig', [
-            'location'=>$location,
-            'edit_location_form'=>$form->createView(),
+      if($this->getUser() == null || $this->getUser() != $location->getUser() || $this->getUser() != $location->getUser() and !( in_array('ROLE_ADMIN', $this->getUser()->getRoles())) ){
+          return $this->render('accesdenied.html.twig', [
+              'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
           ]);
-        }
       }
-      else{
+    if(!isset($_POST['modif'])){
+      $form = $this->createForm(LocationType::class, $location);
+      $form->handleRequest($request);
 
+      if(!$form->isSubmitted() || !$form->isValid()){
+        return $this->render('location/edit.html.twig', [
+          'location'=>$location,
+          'edit_location_form'=>$form->createView(),
+        ]);
       }
+    }
+    else{
       $form = $this->createForm(LocationType::class, $location);
       $form->handleRequest($request);
       $em = $this->getDoctrine()->getManager();
@@ -101,5 +115,23 @@ class LocationController extends Controller{
       unset($_POST);
       return $this->redirectToRoute('indexLocation');
     }
+  }
+    
+
+    /**
+     * @Route("/search", name="searchLocation")
+     */
+     public function searchLocation(Request $request){
+      $em = $this->getDoctrine()->getManager();
+      $motcle = $request->get('search');
+
+      $listeLocations = $em->getRepository('AppBundle:Location')->findBy(
+        array('ville'=>$motcle)
+      );
+
+      return $this->render('location/index.html.twig',[
+        'locations'=>$listeLocations
+      ]);
+     }
 }
 ?>

@@ -2,6 +2,10 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block fos_user_title %}
+    Création de compte effectué
+{% endblock fos_user_title %}
+
 {% block fos_user_content %}
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
     {% if targetUrl %}

@@ -1,34 +1,54 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-    <body>
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+{% extends 'base.html.twig' %}
 
-        {% if app.request.hasPreviousSession %}
-            {% for type, messages in app.session.flashbag.all() %}
-                {% for message in messages %}
-                    <div class="flash-{{ type }}">
-                        {{ message }}
+{% block headerBackground %}
+    <div class="navbarFixeDefault"></div>
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="margin-top: 100px; margin-bottom: 80px;">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="card card-signup">
+                <div class="header header-primary text-center">
+                    <h4>{% block fos_user_title %}{% endblock fos_user_title %}</h4>
+                    <div class="social-line">
                     </div>
-                {% endfor %}
-            {% endfor %}
-        {% endif %}
+                </div>
+                <p class="text-divider">
+                    {% block fos_user_subtitle %}{% endblock fos_user_subtitle %}
+                </p>
+                <div class="content">
 
-        <div>
-            SALUTSALUTSALUTSALUTSALUTSALUTSALUTSALUT
-            {% block fos_user_content %}
-            {% endblock fos_user_content %}
+
+
+                    {% if app.request.hasPreviousSession %}
+                        {% for type, messages in app.session.flashbag.all() %}
+                            {% for message in messages %}
+                                <div class="flash-{{ type }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+
+                    <div>
+                        {% block fos_user_content %}
+                        {% endblock fos_user_content %}
+                    </div>
+
+                    <!-- If you want to add a checkbox to this form, uncomment this code
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="optionsCheckboxes" checked>
+                            Subscribe to newsletter
+                        </label>
+                    </div> -->
+                </div>
+            </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+
+{% endblock %}

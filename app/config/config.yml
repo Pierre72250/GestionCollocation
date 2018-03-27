@@ -86,10 +86,15 @@ fos_user:
         sender_name: gestionColocation
 
     registration:
-            confirmation:
-                enabled: false
-            form:
-                type: AppBundle\Form\RegistrationType
+        confirmation:
+            enabled: false
+        form:
+            type: AppBundle\Form\RegistrationType
+
+    profile:
+        form:
+            type: AppBundle\Form\ProfileType
+
     resetting:
         token_ttl: 86400
         email:
@@ -100,3 +105,4 @@ fos_user:
         username_canonicalizer: fos_user.util.canonicalizer.default
         token_generator:        fos_user.util.token_generator.default
         user_manager:           fos_user.user_manager.default
+

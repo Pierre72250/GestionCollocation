@@ -50,6 +50,13 @@ class User extends BaseUser
      */
     protected $telephone;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="theme", type="string", length=255, nullable=true)
+     */
+    protected $theme;
+
     public function __construct()
     {
         parent::__construct();
@@ -159,5 +166,21 @@ class User extends BaseUser
     public function getTelephone()
     {
         return $this->telephone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    /**
+     * @param string $theme
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
     }
 }

@@ -1,5 +1,24 @@
 {% extends 'base.html.twig' %}
 
+{% block ariane %}
+  <div class="ariane">
+    <div class="container">
+      <ul>
+        <li>
+          <a href="{{ path('homepage') }}">Accueil</a> /
+        </li>
+        <li>
+          <a href="{{ path('newLocation') }}">Proposer une colocation</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block headerBackground %}
+  <div class="navbarFixeDefault"></div>
+{% endblock %}
+
 {% block body %}
     <div class="col-md-6 col-md-offset-3">
       <h2 class="text-center">Proposer une annonce</h2>

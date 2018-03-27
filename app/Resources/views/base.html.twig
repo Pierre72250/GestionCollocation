@@ -10,10 +10,31 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
         <!-- Styles -->
-        {% stylesheets 'Resources/assets/css/*'
-        filter='cssrewrite' output='Resources/assets/css/compiled/app.css' %}
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
-        {% endstylesheets %}
+        {% if app.user and app.user.theme == '2' %}
+            {% stylesheets
+                'Resources/assets/css/bootstrap.min.css'
+                'Resources/assets/css/material-kit3.css'
+                'Resources/assets/css/style3.css'
+                filter='cssrewrite' output='Resources/assets/css/compiled/app.css' %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% elseif app.user and app.user.theme == '1' %}
+            {% stylesheets
+            'Resources/assets/css/bootstrap.min.css'
+            'Resources/assets/css/material-kit2.css'
+            'Resources/assets/css/style2.css'
+            filter='cssrewrite' output='Resources/assets/css/compiled/app.css' %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% else %}
+            {% stylesheets
+                'Resources/assets/css/bootstrap.min.css'
+                'Resources/assets/css/material-kit.css'
+                'Resources/assets/css/style.css'
+                filter='cssrewrite' output='Resources/assets/css/compiled/app.css' %}
+                <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+            {% endstylesheets %}
+        {% endif %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -53,7 +74,7 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <a href="{{ path('indexLocation') }}" >
-                                    <i class="material-icons">search</i> {{"rechloca"|trans}}
+                                    <i class="material-icons">list</i> {{"listLoca"|trans}}
                                 </a>
                             </li>
                             <li>
@@ -61,43 +82,45 @@
                                     <i class="material-icons">add</i> {{"newloca"|trans}}
                                 </a>
                             </li>
-                            <li>
-                                {% if app.user %}
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li>
+                                    <a href="{{ path('indexUsers') }}">
+                                        <i class="material-icons">build</i> Administration
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if app.user %}
+                                <li>
+                                    <a href="{{ path('fos_user_profile_show') }}">
+                                        <i class="material-icons">person</i> Mon profil
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{ path('fos_user_security_logout') }}">
-                                        Déconnexion
+                                        <i class="material-icons">power_settings_new</i> Déconnexion
                                     </a>
-                                {% else %}
+                                </li>
+                            {% else %}
+                                <li>
                                     <a href="{{ path('fos_user_security_login') }}">
-                                        Connexion
+                                        <i class="material-icons">person</i> Connexion
                                     </a>
-                                {% endif %}
-                            </li>
-                            <!-- <li>
-                                <a href="{{ path('fos_user_profile_edit') }}"><i class="material-icons">settingsbase.html.twig</i></a>
-                            </li> -->
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
             </nav>
             <!-- End Navbar -->
             <div class="wrapper">
-                <div class="header header-filter" style="background-image: url('{{ asset('Resources/assets/img/header-background.jpg') }}');">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="brand">
-                                    <h1>Gestion des colocations</h1>
-                                    <h3>Projet Symfony - L3 MIAGE - Université de Nantes</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="main main-raised" style="padding-top:20px">
+                {% block headerBackground %}{% endblock %}
+                <div class="main main-raised">
+                    {% block ariane %}{% endblock %}
+
                     <div class="container">
                         {% block body %}{% endblock %}
                     </div>
-                </div>
+                  </div>
                 <footer class="footer">
                     <div class="container">
                         <nav class="pull-left">

@@ -1,11 +1,31 @@
 
 {% extends 'base.html.twig' %}
 
+{% block ariane %}
+    <div class="ariane">
+        <div class="container">
+            <ul>
+                <li>
+                    <a href="{{ path('homepage') }}">Accueil</a> /
+                </li>
+                <li>
+                    <a href="{{ path('indexLocation') }}">Liste des colocations</a>
+                </li>
+                <li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block headerBackground %}
+    <div class="navbarFixeDefault"></div>
+{% endblock %}
+
 {% block body %}
 
     {% if locations %}
 
-        <h2>{{"titre.loca"|trans}}</h2>
+        <h2>{{"titre.loca"|trans}} <a href="{{ path('rssLocation') }}" class="rss"> <i class="material-icons">rss_feed</i></a> </h2>
 
         <table class="table">
             <thead>
@@ -23,8 +43,8 @@
                         <td>{{ loc.adresse }}</td>
                         <td>{{ loc.loyerCcM }} €</td>
                         <td class="td-actions text-right">
-                            <!-- On verifie que l'utilisateur est connecté et si c'est le redécteur de l'annonce. -->
-                            {% if is_granted("IS_AUTHENTICATED_FULLY") and app.user.id == loc.getuser.getid %}
+                            <!-- On verifie que l'utilisateur est connecté et si c'est le redacteur de l'annonce. -->
+                            {% if ( is_granted("IS_AUTHENTICATED_FULLY") and app.user.id == loc.getuser.getid ) or is_granted('ROLE_ADMIN') %}
                                 <a href="{{ path('updateLocation', { 'id': loc.id }) }}" rel="tooltip" title="Editer l'annonce" class="btn btn-success btn-simple btn-xs">
                                     <i class="fa fa-edit"></i>
                                 </a>

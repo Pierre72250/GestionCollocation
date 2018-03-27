@@ -9,7 +9,12 @@ app:
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
     prefix: /{_locale}
-    schemes:  [http]
+    schemes: [http]
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /{_locale}/account/
+    schemes: [http]
 
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
@@ -21,7 +26,7 @@ fos_user_resetting:
     prefix: /{_locale}/resetting
     schemes:  [http]
 
-fos_user_profile:
-    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /{_locale}/account/
     schemes:  [http]

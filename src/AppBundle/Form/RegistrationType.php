@@ -25,11 +25,11 @@ class RegistrationType extends AbstractType
             'required' => true,
             'trim' => true,
             'label' => "Registration.Label.Email",
-            'attr' => array('placeholder' => 'Registration.Placeholder.Email', 'maxlength' => 150)));
+            'attr' => array('maxlength' => 150)));
 
         $builder->add('username', null, array(
             'label' => "Registration.Label.UserName",
-            'attr' => array('placeholder' => 'Registration.Placeholder.UserName', 'maxlength' => 150)));
+            'attr' => array('maxlength' => 150)));
 
         $builder->add('plainPassword', RepeatedType::class, array(
             'error_bubbling'=>true,
@@ -37,8 +37,8 @@ class RegistrationType extends AbstractType
             'type' => PasswordType::class,
             'options' => array('attr' => array('class' => 'password-field')),
             'invalid_message' => 'Invalide_Password',
-            'first_options'  => array('label' => "Registration.Label.Password", 'attr' => array('placeholder' => 'Registration.Placeholder.Password', 'maxlength' => '40')),
-            'second_options' => array('label' => "Registration.Label.ConfirmPassword", 'attr' => array('placeholder' => 'Registration.Placeholder.ConfirmPassword', 'maxlength' => '40'))));
+            'first_options'  => array('label' => "Registration.Label.Password", 'attr' => array('maxlength' => '40')),
+            'second_options' => array('label' => "Registration.Label.ConfirmPassword", 'attr' => array('maxlength' => '40'))));
 
         $builder->add('validation', SubmitType::class, array('label' => "Registration.Label.Validation"));
     }

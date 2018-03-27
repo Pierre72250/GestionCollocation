@@ -640,13 +640,13 @@
 
 .navbarFixeDefault{
   height: 160px;
-  background-color: #001a42;
+  background-color: #ae1e7e;
 }
 
 .ariane{
-  color: #001a42;
-  background-color: #cbcbcb;
-  padding: 15px 0;
+    color: #ae1e7e;
+    background-color: #cbcbcb;
+    padding: 15px 0;
 }
 
 .ariane ul{

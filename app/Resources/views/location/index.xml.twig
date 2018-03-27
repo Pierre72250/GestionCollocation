@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>{{ 'rss.title'|trans }}</title>
+        <description>{{ 'rss.description'|trans }}</description>
+        <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
+        <lastBuildDate>{{ (locations|last).publishedAt|default('now')|date('r', timezone='GMT') }}</lastBuildDate>
+        <language>{{ app.request.locale }}</language>
+
+        {% for loc in locations %}
+            <item>
+                <title>{{ loc.ville }}</title>
+                <description>{{ loc.description }}</description>
+                <author>{{ loc.getuser.username }}</author>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

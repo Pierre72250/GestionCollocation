@@ -1,28 +1,32 @@
-rechloca: 'Recherche une colocation'
+listLoca: 'Toutes les colocations'
 newloca: 'Proposer une colocation'
 projet: 'Le projet'
 creerCompt: 'Créer un compte'
 titre.loca: 'Liste des colocations'
-boutonSup: 'Supprimer'
-boutonModif: 'Modifier'
-locAdr: 'Adresse'
-locVille: 'Ville'
+titre.users: 'Liste des utilisateurs'
+boutonSup: Supprimer
+boutonModif: Modifier
+locAdr: Adresse
+locVille: Ville
 loccp: 'Code postal'
 locLoyerCcM: 'Loyer mensuel charges comprises'
 locCharges: 'Charges mensuelles'
 locSurfaceBalcon: 'Surface du balcon (m²)'
 locSurfaceTot: 'Surface totale (m²)'
 locAnneeConst: 'Année de construction'
-locEtage: 'Etage'
+locEtage: Etage
 locnbPiece: 'Nombre de pièces'
 locnbChambre: 'Nombre de chambres disponibles'
 locToiletteSep: 'Toilette sépraées'
-locCuisineEqui: 'Cuisine équipée'
-locMeuble: 'Meublé'
+locCuisineEqui: 'Cuisine éaquipée'
+locMeuble: Meublé
 locNbParking: 'Nombre de parking disponible'
-locInterphone: 'Interphone'
-locAscenseur: 'Ascenseur'
+locInterphone: Interphone
+locAscenseur: Ascenseur
 locNormesAndicap: 'Normes handicapées'
-locDescription: 'Description'
-boutonAjout: 'Ajouter'
-titreHeader: 'Gestion Colocation'
+locDescription: Description
+boutonAjout: Ajouter
+titreHeader: Gestion Colocation
+Registration:
+  Register:
+    email: 'email'
