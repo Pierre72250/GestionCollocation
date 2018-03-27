@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block ariane %}
+  <div class="ariane">
+    <div class="container">
+      <ul>
+        <li>
+          <a href="{{ path('homepage') }}">{{"accueil"|trans}}</a> /
+        </li>
+        <li>
+          <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')) }}">Author</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block headerBackground %}
+  <div class="navbarFixeDefault"></div>
+{% endblock %}
+
+{% block body %}
+<h2>{{"mentionlegal"|trans}}</h2>
+Site réalisé par Simon ROUILLIER et Pierre FOUILLET en Mars 2018 dans le cadre d'un projet web. Tout droit résrvé.
+Pour toutes informations veuillez nous contactez aux adresses mails suivantes : <br>
+simon.rouillier@etu.univ-nantes.fr<br>
+pierre.fouillet@etu.univ-nantes.fr
+{% endblock %}

@@ -2,7 +2,7 @@ listLoca: 'Toutes les annonces'
 newloca: 'Proposer une annonce'
 projet: 'Le projet'
 creerCompt: 'Créer un compte'
-titre.loca: 'Liste des annonces'
+titre.loca: 'Les annonces'
 titre.users: 'Liste des utilisateurs'
 boutonSup: Supprimer
 boutonModif: Modifier
@@ -27,6 +27,16 @@ locNormesAndicap: 'Normes handicapées'
 locDescription: Description
 boutonAjout: Ajouter
 titreHeader: 'Gestion Colocation'
+Registration:
+  Register:
+    email: 'email'
+profile:
+  show:
+    email: 'Adresse email'
+    prenom: 'Prénom'
+    nom: 'Nom'
+    telephone: 'Téléphone'
+titreHeader: 'Gestion Colocation'
 Registration.Register.email: email
 accesRefuse: 'Accès refusé. Vous n''avez pas les droits pour acceder à cette page.'
 mon_profil: 'Mon profil'
@@ -36,7 +46,7 @@ accueil: Accueil
 rss.description: 'Flux RSS des annonces du site.'
 oui: Oui
 non: Non
-titreRecherche: Recherche
+titreRecherche: 'Rechercher dans nos annonces.'
 modifLoca: 'Modifier l''annonce'
 voirAnnonce: 'Voir l''annonce'
 aucuneAnnonceRech: 'Aucune annonce correspond à votre re cherche.'

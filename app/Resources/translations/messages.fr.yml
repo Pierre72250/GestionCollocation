@@ -11,7 +11,7 @@ locVille: Ville
 loccp: 'Code postal'
 locLoyerCcM: 'Loyer mensuel charges comprises'
 locCharges: 'Charges mensuelles'
-locSurfaceBalcon: 'Surface du balcon (m²)'
+locSurfaceBalcon: 'Surface du balcon/terrasse (m²)'
 locSurfaceTot: 'Surface totale (m²)'
 locAnneeConst: 'Année de construction'
 locEtage: Etage
@@ -27,16 +27,6 @@ locNormesAndicap: 'Normes handicapées'
 locDescription: Description
 boutonAjout: Ajouter
 titreHeader: 'Gestion Colocation'
-Registration:
-  Register:
-    email: 'email'
-profile:
-  show:
-    email: 'Adresse email'
-    prenom: 'Prénom'
-    nom: 'Nom'
-    telephone: 'Téléphone'
-titreHeader: 'Gestion Colocation'
 Registration.Register.email: email
 accesRefuse: 'Accès refusé. Vous n''avez pas les droits pour acceder à cette page.'
 mon_profil: 'Mon profil'
@@ -50,3 +40,10 @@ titreRecherche: 'Rechercher dans nos annonces.'
 modifLoca: 'Modifier l''annonce'
 voirAnnonce: 'Voir l''annonce'
 aucuneAnnonceRech: 'Aucune annonce correspond à votre re cherche.'
+profile.show.email: 'Adresse email'
+profile.show.prenom: Prénom
+profile.show.nom: Nom
+profile.show.telephone: Téléphone
+mentionlegal: Mentions légales
+rss.title: Flux RSS
+champobli: champ obligatoire
