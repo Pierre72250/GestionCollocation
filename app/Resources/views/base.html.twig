@@ -119,6 +119,7 @@
 
                     <div class="container">
                         {% block body %}{% endblock %}
+                        <!-- contenu ici suivi du footer en bas -->
                     </div>
                   </div>
                 <footer class="footer">
@@ -139,7 +140,7 @@
                             </ul>
                         </nav>
                         <div class="copyright pull-right">
-                            <a href="{{ path('author') }}">&copy; 2018 - Made by Simon ROUILLIER & Pierre FOUILLET - Université de Nantes - Mentions légales</a>
+                            <a href="{{ path('author') }}">&copy; 2018 - Made by Simon ROUILLIER & Pierre FOUILLET - Université de Nantes - {{"mentionlegal"|trans}}</a>
                         </div>
                     </div>
                 </footer>

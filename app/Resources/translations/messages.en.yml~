@@ -36,7 +36,7 @@ rss.title: 'RSS of website'
 rss.description: 'RSS of website'
 oui: 'Yes'
 non: 'No'
-titre.users: List of users
+titre.users: 'List of users'
 titreRecherche: 'Search roommate'
 voirAnnonce: 'Description of announcement'
 aucuneAnnonceRech: 'No specific announcements'
@@ -46,5 +46,6 @@ profile.show.email: 'Email adress'
 profile.show.prenom: Surname
 profile.show.nom: Name
 profile.show.telephone: 'Phone number'
-mentionlegal: General Conditions
-champobli:  mandatory field
+mentionlegal: 'General Conditions'
+champobli: 'mandatory field'
+infoAnnonce: Informations of announcement

@@ -19,7 +19,7 @@ class LocationController extends Controller{
    * @return \Symfony\Component\HttpFoundation\Response
    * @throws \LogicException
    */
-   public function indexLocation(Request $request){
+   public function indexLocation(Request $request){ // affichage de toutes les annonces
      $repository = $this->getDoctrine()->getRepository(Location::class);
      $locations = $repository->findAll();
 
@@ -33,7 +33,7 @@ class LocationController extends Controller{
      * @Method("GET")
      * @Cache(smaxage="10")
      */
-    public function rssLocation(Request $request){
+    public function rssLocation(Request $request){ // affichage du flux RSS
         $repository = $this->getDoctrine()->getRepository(Location::class);
         $locations = $repository->findAll();
 
@@ -45,7 +45,7 @@ class LocationController extends Controller{
    /**
     * @Route("/delete/{id}", requirements={"id": "\d+"}, name="deleteLocation")
     */
-   public function deleteLocation(Location $location, Request $request){
+   public function deleteLocation(Location $location, Request $request){ // suppression d'une annonce
      $em = $this->getDoctrine()->getManager();
      $em->remove($location);
      $em->flush();
@@ -58,8 +58,8 @@ class LocationController extends Controller{
     * @return \Symfony\Component\HttpFoundation\Response
     * @throws \LogicException
     */
-   public function newLocation(Request $request){
-     if($this->getUser() == null){
+   public function newLocation(Request $request){ // ajout d'une annonce
+     if($this->getUser() == null){ // possible que si un utilisateur est connecté
            return $this->redirectToRoute('fos_user_security_login');
        }
 
@@ -70,7 +70,7 @@ class LocationController extends Controller{
        $form->handleRequest($request);
        $location->setUser($this->getUser());
 
-       if(!isset($_POST['ajout'])){
+       if(!isset($_POST['ajout'])){ // si le form n'a pas envoyé ajout en mode post
             if(!$form->isSubmitted() || !$form->isValid()){
                 return $this->render('location/new.html.twig', [
                     'add_location_form' => $form->createView(),
@@ -78,7 +78,7 @@ class LocationController extends Controller{
                 ]);
             }
        }
-       else{
+       else{ // sinon on effectue les requetes pour la modification cela veut dire que l'utilisateur à valider
            $em = $this->getDoctrine()->getManager();
            $em->persist($location);
            $em->flush();
@@ -90,13 +90,13 @@ class LocationController extends Controller{
    /**
     * @Route("/edit/{id}", requirements={"id": "\d+"}, name="updateLocation")
     */
-    public function updateLocation(Location $location, Request $request){
+    public function updateLocation(Location $location, Request $request){ // modification d'une annonce
       if($this->getUser() == null || $this->getUser() != $location->getUser() || $this->getUser() != $location->getUser() and !( in_array('ROLE_ADMIN', $this->getUser()->getRoles())) ){
           return $this->render('accesdenied.html.twig', [
               'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
           ]);
       }
-    if(!isset($_POST['modif'])){
+    if(!isset($_POST['modif'])){ // si le form n'a pas envoyé ajout en mode post
       $form = $this->createForm(LocationType::class, $location);
       $form->handleRequest($request);
 
@@ -107,7 +107,7 @@ class LocationController extends Controller{
         ]);
       }
     }
-    else{
+    else{  // sinon on effectue les requetes pour la modification cela veut dire que l'utilisateur à valider
       $form = $this->createForm(LocationType::class, $location);
       $form->handleRequest($request);
       $em = $this->getDoctrine()->getManager();
@@ -121,7 +121,7 @@ class LocationController extends Controller{
     /**
      * @Route("/search", name="searchLocation")
      */
-    public function searchLocation(Request $request){
+    public function searchLocation(Request $request){ // recherche
         $em = $this->getDoctrine()->getManager();
         $ville = $request->get('ville'); // on récupère la velur de l'input name=ville
         $loyer = $request->get('loyer_cc_m'); // " name=loyer_cc_m
@@ -162,7 +162,7 @@ class LocationController extends Controller{
     /**
      * @Route("/information/{id}", requirements={"id": "\d+"}, name="infoLocation")
      */
-    public function infoLocation(Location $location, Request $request){
+    public function infoLocation(Location $location, Request $request){ // affichage d'une annonce
 
         return $this->render('location/info.html.twig', [
             'location'=>$location,

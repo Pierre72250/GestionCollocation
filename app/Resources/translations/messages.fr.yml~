@@ -44,6 +44,7 @@ profile.show.email: 'Adresse email'
 profile.show.prenom: Prénom
 profile.show.nom: Nom
 profile.show.telephone: Téléphone
-mentionlegal: Mentions légales
-rss.title: Flux RSS
-champobli: champ obligatoire
+mentionlegal: 'Mentions légales'
+rss.title: 'Flux RSS'
+champobli: 'champ obligatoire'
+infoAnnonce: 'Informations de l''annonce'

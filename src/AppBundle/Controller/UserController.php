@@ -60,7 +60,7 @@ class UserController extends Controller
     /**
      * @Route("/profil/{id}", requirements={"id": "\d+"}, name="infoProfil")
      */
-    public function infoLocation(User $user, Request $request){
+    public function infoLocation(User $user, Request $request){ // page sur l'info de l'utilisateur
 
         return $this->render('user/show.html.twig', [
             'user'=>$user,
