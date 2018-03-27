@@ -52,19 +52,19 @@
                                     <i class="fa fa-times"></i>
                                 </a>
                             {% endif %}
-                            <a class="btn btn-primary" href="#">Voir l'annonce</a>
+                            <a class="btn btn-primary" href="{{ path('infoLocation', { 'id': loc.id }) }}">Voir l'annonce</a>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <div class="alert alert-info">
+        <div class="alert alert-info" style="margin-top: 20px;">
             <div class="container-fluid">
                 <div class="alert-icon">
                     <i class="material-icons">info_outline</i>
                 </div>
-                <b>Aucune annonce n'est enregistrée sur le site.</b>
+                <b>Aucune annonce ne correspond à votre recherche.</b>
             </div>
         </div>
     {% endif %}

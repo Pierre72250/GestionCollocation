@@ -116,22 +116,60 @@ class LocationController extends Controller{
       return $this->redirectToRoute('indexLocation');
     }
   }
-    
+
 
     /**
      * @Route("/search", name="searchLocation")
      */
-     public function searchLocation(Request $request){
-      $em = $this->getDoctrine()->getManager();
-      $motcle = $request->get('search');
+    public function searchLocation(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $ville = $request->get('ville'); // on récupère la velur de l'input name=ville
+        $loyer = $request->get('loyer_cc_m'); // " name=loyer_cc_m
 
-      $listeLocations = $em->getRepository('AppBundle:Location')->findBy(
-        array('ville'=>$motcle)
-      );
+        $repository = $em->getRepository('AppBundle:Location');
+        if($loyer == null){ // si le user n'a pas rempli le loyer max alors on fait la recherche que sur la ville
+            $query = $repository->createQueryBuilder('l')
+                ->andWhere('l.ville like :ville')
+                ->setParameter('ville', '%'.$ville.'%')
+                ->orderBy('l.ville', 'ASC')
+                ->getQuery();
+        }
+        elseif($ville == null){ // et inversement
+            $query = $repository->createQueryBuilder('l');
+            $query = $query->andWhere($query->expr()->between('l.loyerCcM', '0', ':loyerCcM'))
+                ->setParameter('loyerCcM', $loyer)
+                ->orderBy('l.loyerCcM', 'ASC')
+                ->getQuery();
+        }
+        else{
+            $query = $repository->createQueryBuilder('l');
+            $query = $query->andWhere($query->expr()->between('l.loyerCcM', '0', ':loyerCcM'))
+                ->setParameter('loyerCcM', $loyer)
+                ->orderBy('l.loyerCcM', 'ASC')
+                ->andWhere('l.ville like :ville')
+                ->setParameter('ville', '%'.$ville.'%')
+                ->orderBy('l.ville', 'ASC')
+                ->getQuery();
+        }
 
-      return $this->render('location/index.html.twig',[
-        'locations'=>$listeLocations
-      ]);
-     }
+        $listeLocations = $query->getResult();
+
+        return $this->render('location/index.html.twig',[
+            'locations'=>$listeLocations
+        ]);
+    }
+
+    /**
+     * @Route("/information/{id}", requirements={"id": "\d+"}, name="infoLocation")
+     */
+    public function infoLocation(Location $location, Request $request){
+        $form = $this->createForm(LocationType::class, $location);
+        $form->handleRequest($request);
+
+        return $this->render('location/info.html.twig', [
+            'location'=>$location,
+            'info_location_form'=>$form->createView(),
+        ]);
+    }
 }
 ?>

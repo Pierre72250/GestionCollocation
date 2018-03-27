@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="col-md-6 col-md-offset-3">
+  <h2 class="text-center">Informations de l'annonce</h2>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locAdr"|trans}}</label>
+      {{location.adresse}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locVille"|trans}}</label>
+      {{location.ville}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"loccp"|trans}}</label>
+      {{location.codePostal}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locLoyerCcM"|trans}}</label>
+      {{location.loyerCcM}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locCharges"|trans}}</label>
+      {{location.charges}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locSurfaceBalcon"|trans}}</label>
+      {{location.balcon}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locSurfaceTot"|trans}}</label>
+      {{location.surfaceTot}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locAnneeConst"|trans}}</label>
+      {{location.anneeConst}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locEtage"|trans}}</label>
+      {{location.etage}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locnbPiece"|trans}}</label>
+      {{location.nbPiece}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locnbChambre"|trans}}</label>
+      {{location.nbChambre}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locNbParking"|trans}}</label>
+      {{location.nbParking}}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locToiletteSep"|trans}}</label>
+      {% if location.toilette == 1 %}
+      {{"oui"|trans}}
+      {% else %}
+      {{"non"|trans}}
+      {% endif %}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locCuisineEqui"|trans}}</label>
+      {% if location.cuisineEquipee == 1 %}
+      {{"oui"|trans}}
+      {% else %}
+      {{"non"|trans}}
+      {% endif %}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locMeuble"|trans}}</label>
+      {% if location.meuble == 1 %}
+      {{"oui"|trans}}
+      {% else %}
+      {{"non"|trans}}
+      {% endif %}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locInterphone"|trans}}</label>
+      {% if location.interphone == 1 %}
+      {{"oui"|trans}}
+      {% else %}
+      {{"non"|trans}}
+      {% endif %}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locAscenseur"|trans}}</label>
+      {% if location.ascenseur == 1 %}
+      {{"oui"|trans}}
+      {% else %}
+      {{"non"|trans}}
+      {% endif %}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locNormesAndicap"|trans}}</label>
+      {% if location.normesAndicap == 1 %}
+      {{"oui"|trans}}
+      {% else %}
+      {{"non"|trans}}
+      {% endif %}
+    </div>
+    <div class="form-group label-floating">
+      <label class="control-label">{{"locDescription"|trans}}</label>
+      {{location.description}}
+    </div>
+</div>
+{% endblock %}

@@ -17,11 +17,9 @@
 
 {% block body %}
     <h2>Recherche</h2>
-     <form class="form-horizontal" action="{{ path('searchLocation') }}" method="post" enctype="multipart/form-data">
-      {{"locVille"|trans}}<input type="text" name="ville">
-      {{"locLoyerCcM"|trans}} max<input type="text" name="loyer_cc_m">
-      {{"locNbParking"|trans}}<input type="number" name="nb_parking">
-
-      <input type="submit" class="btn btn-primary" value="Go">
+    <form class="form-horizontal" action="{{ path('searchLocation') }}" method="post" enctype="multipart/form-data">
+        {{"locVille"|trans}}<input type="text" name="ville">
+        {{"locLoyerCcM"|trans}} max<input type="text" name="loyer_cc_m">
+        <input type="submit" class="btn btn-primary" value="Go">
     </form>
 {% endblock %}
