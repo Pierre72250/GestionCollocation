@@ -40,7 +40,7 @@ class RegistrationType extends AbstractType
             'first_options'  => array('label' => "Registration.Label.Password", 'attr' => array('maxlength' => '40')),
             'second_options' => array('label' => "Registration.Label.ConfirmPassword", 'attr' => array('maxlength' => '40'))));
 
-        $builder->add('validation', SubmitType::class, array('label' => "Registration.Label.Validation"));
+        $builder->add('validation', SubmitType::class, array('label' => "Créer le compte"));
     }
 
     public function getParent()

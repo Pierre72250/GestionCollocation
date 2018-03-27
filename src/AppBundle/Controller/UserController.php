@@ -24,6 +24,11 @@ class UserController extends Controller
      * @throws \LogicException
      */
     public function indexLocation(Request $request){
+        if($this->getUser() == null || !( in_array('ROLE_ADMIN', $this->getUser()->getRoles())) ){
+            return $this->render('accesdenied.html.twig', [
+                'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+            ]);
+        }
         $repository = $this->getDoctrine()->getRepository(User::class);
         $users = $repository->findAll();
 
@@ -50,5 +55,15 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         return $this->redirectToRoute('indexUsers');
+    }
+
+    /**
+     * @Route("/profil/{id}", requirements={"id": "\d+"}, name="infoProfil")
+     */
+    public function infoLocation(User $user, Request $request){
+
+        return $this->render('user/show.html.twig', [
+            'user'=>$user,
+        ]);
     }
 }

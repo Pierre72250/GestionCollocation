@@ -1,8 +1,38 @@
 {% extends 'base.html.twig' %}
 
+{% block ariane %}
+  <div class="ariane">
+    <div class="container">
+      <ul>
+        <li>
+          <a href="{{ path('homepage') }}">Accueil</a> /
+        </li>
+        <li>
+          <a href="{{ path('indexLocation') }}">Liste des colocations</a> /
+        </li>
+        <li>
+          <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')) }}">Information</a>
+        </li>
+        <li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}
+
+{% block headerBackground %}
+  <div class="navbarFixeDefault"></div>
+{% endblock %}
+
 {% block body %}
 <div class="col-md-6 col-md-offset-3">
   <h2 class="text-center">Informations de l'annonce</h2>
+  <iframe
+          width="600"
+          height="450"
+          frameborder="0" style="border:0"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMvG5O9a6rGwDAQUcEyJ0IrjTAOIKu4xc&q={{ location.adresse }}+{{ location.ville }}" allowfullscreen>
+  </iframe>
+
     <div class="form-group label-floating">
       <label class="control-label">{{"locAdr"|trans}}</label>
       {{location.adresse}}

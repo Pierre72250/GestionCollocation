@@ -5,48 +5,45 @@
 {% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <div class="container" style="margin-top: 100px; margin-bottom: 80px;">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="card card-signup">
+                    <div class="header header-primary text-center">
+                        <h4>Profil</h4>
+                    </div>
+                    <div class="content">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ user.type }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ user.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ user.nom }}</td>
-            </tr>
-            <tr>
-                <th>Datenaissance</th>
-                <td>{% if user.dateNaissance %}{{ user.dateNaissance|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ user.telephone }}</td>
-            </tr>
-        </tbody>
-    </table>
+                        {% if app.request.hasPreviousSession %}
+                            {% for type, messages in app.session.flashbag.all() %}
+                                {% for message in messages %}
+                                    <div class="flash-{{ type }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
 
-    <ul>
-        <li>
-            <a href="{{ path('user_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                        <div>
+                            {% block fos_user_content %}
+                            {% endblock fos_user_content %}
+                        </div>
+
+                        <div class="fos_user_user_show">
+                            {% if user.prenom %}
+                                <p>{{ 'profile.show.prenom'|trans }}: {{ user.prenom }}</p>
+                            {% endif %}
+                            {% if user.prenom %}
+                                <p>{{ 'profile.show.nom'|trans }}: {{ user.nom }}</p>
+                            {% endif %}
+                            {% if user.prenom %}
+                                <p>{{ 'profile.show.telephone'|trans }}: {{ user.telephone }}</p>
+                            {% endif %}
+                            <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

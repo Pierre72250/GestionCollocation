@@ -63,7 +63,7 @@
                             </a>
                         {% endif %}
 
-                        <a class="btn btn-primary" href="">Voir le profil</a>
+                        <a class="btn btn-primary" href="{{ path('infoProfil', { 'id': user.id }) }}">Voir le profil</a>
                     </td>
                 </tr>
             {% endfor %}

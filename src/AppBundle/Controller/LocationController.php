@@ -163,12 +163,9 @@ class LocationController extends Controller{
      * @Route("/information/{id}", requirements={"id": "\d+"}, name="infoLocation")
      */
     public function infoLocation(Location $location, Request $request){
-        $form = $this->createForm(LocationType::class, $location);
-        $form->handleRequest($request);
 
         return $this->render('location/info.html.twig', [
             'location'=>$location,
-            'info_location_form'=>$form->createView(),
         ]);
     }
 }

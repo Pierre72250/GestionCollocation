@@ -25,6 +25,12 @@
 {% block body %}
   <div class="col-md-6 col-md-offset-3">
     <h2 class="text-center">Modifier l'annonce</h2>
+    <iframe
+            width="600"
+            height="450"
+            frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAMvG5O9a6rGwDAQUcEyJ0IrjTAOIKu4xc&q={{ location.adresse }}+{{ location.ville }}" allowfullscreen>
+    </iframe>
     <form class="form-horizontal" action="" method="post">
       <div class="form-group label-floating">
         <label class="control-label">{{"locAdr"|trans}}</label>
