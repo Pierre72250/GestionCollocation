@@ -1,8 +1,8 @@
-listLoca: 'Toutes les colocations'
-newloca: 'Proposer une colocation'
+listLoca: 'Toutes les annonces'
+newloca: 'Proposer une annonce'
 projet: 'Le projet'
 creerCompt: 'Créer un compte'
-titre.loca: 'Liste des colocations'
+titre.loca: 'Les annonces'
 titre.users: 'Liste des utilisateurs'
 boutonSup: Supprimer
 boutonModif: Modifier
@@ -26,7 +26,7 @@ locAscenseur: Ascenseur
 locNormesAndicap: 'Normes handicapées'
 locDescription: Description
 boutonAjout: Ajouter
-titreHeader: Gestion Colocation
+titreHeader: 'Gestion Colocation'
 Registration:
   Register:
     email: 'email'
@@ -46,7 +46,7 @@ accueil: Accueil
 rss.description: 'Flux RSS des annonces du site.'
 oui: Oui
 non: Non
-titreRecherche: Recherche
+titreRecherche: 'Rechercher dans nos annonces.'
 modifLoca: 'Modifier l''annonce'
 voirAnnonce: 'Voir l''annonce'
 aucuneAnnonceRech: 'Aucune annonce correspond à votre re cherche.'

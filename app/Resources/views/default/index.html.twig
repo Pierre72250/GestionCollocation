@@ -6,8 +6,7 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="brand">
-                        <h1>Gestion des colocations</h1>
-                        <h3>Projet Symfony - L3 MIAGE - Université de Nantes</h3>
+                        <h1>{{ 'titreHeader'|trans }}</h1>
                     </div>
                 </div>
             </div>
@@ -16,7 +15,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2 class="text-center">Rechercher dans nos annonces.</h2>
+    <h2 class="text-center">{{ 'titreRecherche'|trans }}</h2>
 
     <form class="form-horizontal" action="{{ path('searchLocation') }}" method="post" enctype="multipart/form-data">
         <div class="col-sm-5">
