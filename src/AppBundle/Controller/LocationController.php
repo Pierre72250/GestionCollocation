@@ -29,7 +29,7 @@ class LocationController extends Controller{
    }
 
     /**
-     * @Route("/rss.xml", name="rssLocation")
+     * @Route("/rss.xml", name="rssLocation", defaults={"_format"="xml"})
      * @Method("GET")
      * @Cache(smaxage="10")
      */
